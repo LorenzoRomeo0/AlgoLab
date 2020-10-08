@@ -1,0 +1,1 @@
+sequenza1[k--]
