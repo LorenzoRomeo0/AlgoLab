@@ -8,7 +8,7 @@ int main(){
 
     for(int i=0; i<N; i++){
         scanf("%d",&num);
-        if(num == 0) break;
+        if(num == 0) break; 
         else{
             for(int j=0; j<N; j++){
                 if(cont[j]==0){cont[j]=num; j=N; continue;}
