@@ -65,10 +65,6 @@ unsigned long f_iter2(int n){
   return f;
 }
 
-
-
-
-
 int main(){
 
     printf("%lu\n\n\n",f_rec(4));
@@ -129,6 +125,4 @@ int main(){
 2.3) ...
 
 2.4)
-
-
 */
