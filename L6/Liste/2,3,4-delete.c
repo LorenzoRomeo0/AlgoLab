@@ -47,17 +47,17 @@ void list_print(struct node *l){
 
 void list_printInv(struct node *l){
     if(l -> next != NULL)
-        return list_printInv(l -> next);
-
+        list_printInv(l -> next);
     printf("%d ", l -> info);
 }
 
-int* toArray(struct node *l){
+int* toArray(struct node *l, int *size){
     int cont=0, *a;
     int i = 0;
     for(struct node *e = l;e != NULL; e = e->next)
         cont++;
     a = malloc(sizeof(int)*cont);
+    *size = cont;
 
     for(struct node *e = l;e != NULL; e = e->next){
         a[i]=e ->info;
@@ -66,21 +66,53 @@ int* toArray(struct node *l){
     return a;
 }
 
+void list_destroy (Node l){
+    Node curr = l;
+    int elim = 1;
+    while(l != NULL){
+        
+        printf("\n");
+        while(curr != NULL){
+            if(curr -> next == NULL){
+                free(curr);
+                break;
+            }else
+                curr = curr -> next;
+            //printf("%d ", curr ->info);
+        }
+        curr = l;
+    }
+}
+
+void print_arr(int* arr, int size){
+    for(int i=0; i<size; i++)
+        printf("%d ", arr[i]);
+
+}
+
 int main() {
   //struct node *first = malloc(sizeof(struct node));
   struct node *first = list_insert1(1, NULL);
   first = list_insert1(2, first);
   first = list_insert1(3, first);
   int n; 
-  //list_delete( n , first );
+  int *arr = toArray(first, &n);
+  print_arr(arr, n);
+  printf("\n");
+  list_delete( 2 , first );
   list_print( first );
   printf("\n");
   list_printInv(first);
+  printf("\n");
+  //list_destroy(first);
+  printf("\n\n");
+  list_print( first );
   return 0;
 }
 /*
-1) Quando l'elemento da eliminare non e' presente nella lista.
-2) Quando l'elemento da eliminare e' il primo elemento della lista.
-3) Quando l'elemento da eliminare appartiene alla lista e non e' il primo.
-5) Quando l'elemento da eliminare e' l'ultimo nella lista.
+2-
+    1) Quando l'elemento da eliminare non e' presente nella lista.
+    2) Quando l'elemento da eliminare e' il primo elemento della lista.
+    3) Quando l'elemento da eliminare appartiene alla lista e non e' il primo.
+    5) Quando l'elemento da eliminare e' l'ultimo nella lista.
 */
