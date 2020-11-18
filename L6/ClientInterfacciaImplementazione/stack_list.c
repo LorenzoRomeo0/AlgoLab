@@ -81,6 +81,12 @@ int pop( void ){
 /* se c'e' spazio, aggiunge n alla pila; 
 altrimenti esce con messaggio d'errore. */
 void push( int n ){
+    if(pila == NULL){
+        pila = malloc(sizeof(Pila));
+        pila ->first = NULL;
+        pila ->top = NULL;
+        pila ->size = 0;
+    }
     if(pila->first==NULL){
         pila->first = malloc(sizeof(Node));
         pila->first->value = n;
