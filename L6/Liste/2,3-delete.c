@@ -66,7 +66,7 @@ int* toArray(struct node *l, int *size){
     return a;
 }
 
-void list_destroy (Node l){
+void list_destroy1 (Node l){
     Node curr = l;
     int elim = 1;
     while(l != NULL){
@@ -84,6 +84,19 @@ void list_destroy (Node l){
     }
 }
 
+void list_destroy(Node l){
+    
+    if(l != NULL){
+        printf("destroy %d \n", l->info);
+        list_destroy(l->next);
+        if(l->next!=NULL) l->next=NULL;
+        free(l);
+        l = NULL;
+        printf("destroy %p \n", l);
+    }
+        
+}
+
 void print_arr(int* arr, int size){
     for(int i=0; i<size; i++)
         printf("%d ", arr[i]);
@@ -91,23 +104,27 @@ void print_arr(int* arr, int size){
 }
 
 int main() {
-  //struct node *first = malloc(sizeof(struct node));
-  struct node *first = list_insert1(1, NULL);
-  first = list_insert1(2, first);
-  first = list_insert1(3, first);
-  int n; 
-  int *arr = toArray(first, &n);
-  print_arr(arr, n);
-  printf("\n");
-  list_delete( 2 , first );
-  list_print( first );
-  printf("\n");
-  list_printInv(first);
-  printf("\n");
-  //list_destroy(first);
-  printf("\n\n");
-  list_print( first );
-  return 0;
+    //struct node *first = malloc(sizeof(struct node));
+    struct node *first = list_insert1(1, NULL);
+    first = list_insert1(2, first);
+    /* int n; 
+    int *arr = toArray(first, &n);
+    print_arr(arr, n);
+    printf("\n");
+    list_delete( 2 , first );
+    list_print( first );
+    printf("\n");
+    list_printInv(first);*/
+    first = list_insert1(3, first);
+    first = list_insert1(4, first);
+    first = list_insert1(5, first);
+    first = list_insert1(6, first);
+    list_print( first );
+    printf("\nD");
+    list_destroy(first);
+    printf("\n\n--\n");
+    list_print( first );
+    return 0;
 }
 /*
 2-

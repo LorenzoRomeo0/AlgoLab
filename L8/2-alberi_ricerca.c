@@ -51,6 +51,7 @@ Bit_node bit_new (string word){
 }
 
 Bit_node insert(Bit_node first, string word){
+    //printf
     if(!first) return first = bit_new(word);
     Bit_node uno = first;
     Bit_node found = search(first, word);
@@ -59,6 +60,7 @@ Bit_node insert(Bit_node first, string word){
         return first;
     }
     while(uno){
+        //printf("vaffanculo\n");
         if(strcmp(uno->item->word, word)>0){
             if(uno->l)uno = uno -> l;
             else{

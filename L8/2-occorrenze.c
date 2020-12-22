@@ -45,6 +45,7 @@ struct node *olist_insert( string s, struct node *l ){
     }else{
         //printf("-STRINGA AGGIORNA\n");
         for(;l != NULL && l -> next != NULL; l = l->next){
+            //printf("vaffanculo\n");
             if(strcmp(l->word, s)==0){
                     l->count++;
                     inserito = 1;
